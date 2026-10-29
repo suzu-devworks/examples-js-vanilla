@@ -4,9 +4,9 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start": "http-server -c-1 . --ssl --key /etc/ssl/local/localhost.key --cert /etc/ssl/local/localhost.crt"
+    "start": "serve . --ssl-key /etc/ssl/local/localhost.key --ssl-cert /etc/ssl/local/localhost.crt"
   },
   "dependencies": {
-    "http-server": "^14.1.1"
+    "serve": "^14.2.6"
   }
 }

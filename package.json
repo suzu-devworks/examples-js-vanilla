@@ -11,7 +11,7 @@
     "url": "git+https://github.com/suzu-devworks/examples-js-vanilla.git"
   },
   "workspaces": [
-    "packages/*"
+    "packages/**"
   ],
   "scripts": {
     "preinstall": "npx only-allow pnpm",
@@ -37,16 +37,16 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "@eslint/json": "^2.0.1",
-    "eslint": "^10.8.0",
-    "globals": "^17.8.0",
-    "lint-staged": "^17.2.0",
-    "prettier": "3.9.6",
-    "simple-git-hooks": "^2.13.1",
-    "stylelint": "^17.14.1",
-    "stylelint-config-recess-order": "^7.7.0",
+    "@eslint/json": "^2.1.1",
+    "eslint": "^10.13.0",
+    "globals": "^17.13.0",
+    "lint-staged": "^17.6.0",
+    "prettier": "3.9.10",
+    "simple-git-hooks": "^2.14.0",
+    "stylelint": "^17.16.0",
+    "stylelint-config-recess-order": "^7.9.0",
     "stylelint-config-standard-scss": "^17.0.0",
-    "typescript-eslint": "^8.65.0"
+    "typescript-eslint": "^8.72.1"
   },
-  "packageManager": "pnpm@10.20.0"
+  "packageManager": "pnpm@12.16.1"
 }
