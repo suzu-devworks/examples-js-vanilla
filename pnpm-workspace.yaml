@@ -3,7 +3,7 @@ packages:
 
 allowBuilds:
   '@parcel/watcher': true
-  esbuild: set this to true or false
+  esbuild: false
   simple-git-hooks: true
 
 minimumReleaseAgeExclude:
@@ -27,5 +27,3 @@ minimumReleaseAgeExclude:
   - sass-embedded-win32-x64@1.107.0
   - sass-embedded@1.107.0
   - sass@1.107.0
-
-neverBuiltDependencies: []
