@@ -1,21 +1,18 @@
 {
   "version": "0.2",
   "ignorePaths": [
-    ".git",
-    ".devcontainer",
-    ".config",
-    ".github",
-    ".vscode",
+    "**/.*/**",
     ".editorconfig",
-    ".gitignore",
-    "node_modules",
-    "package.json",
-    "pnpm-*.yaml",
-    ".*cache"
+    ".git*",
+    "*.json",
+    "*.yaml",
+    "yarn.lock",
+    "pnpm-lock.yaml",
+    "packages.lock.json"
   ],
   "dictionaryDefinitions": [],
   "dictionaries": [],
-  "words": ["webrtc"],
+  "words": [],
   "ignoreWords": [],
   "import": []
 }

@@ -133,6 +133,9 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
+## pnpm store
+.pnpm-store/
+
 ##> system files.
 [Tt]emp/
 [Tt]humbs.db
@@ -158,3 +161,4 @@ $RECYCLE.BIN/
 !.vscode/settings.json
 #!.vscode/tasks.json
 #!.vscode/launch.json
+
