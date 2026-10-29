@@ -3,6 +3,7 @@ packages:
 
 allowBuilds:
   '@parcel/watcher': true
+  esbuild: set this to true or false
   simple-git-hooks: true
 
 minimumReleaseAgeExclude:
