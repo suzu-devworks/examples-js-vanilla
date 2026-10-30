@@ -24,43 +24,15 @@ First, generate the initial settings file using the command:
 pnpm biome init
 ```
 
-The contents look like this.
+## Migration
 
-```json
-{
-  "$schema": "https://biomejs.dev/schemas/2.6.4/schema.json",
-  "vcs": {
-    "enabled": true,
-    "clientKind": "git",
-    "useIgnoreFile": true
-  },
-  "files": {
-    "ignoreUnknown": false
-  },
-  "formatter": {
-    "enabled": true,
-    "indentStyle": "tab"
-  },
-  "linter": {
-    "enabled": true,
-    "rules": {
-      "preset": "recommended"
-    }
-  },
-  "javascript": {
-    "formatter": {
-      "quoteStyle": "double"
-    }
-  },
-  "assist": {
-    "enabled": true,
-    "actions": {
-      "source": {
-        "organizeImports": "on"
-      }
-    }
-  }
-}
+Biome can automatically migrate your existing ESLint, Prettier, and Stylelint configuration files
+to the equivalent `biome.json` file.
+
+```bash
+pnpm biome migrate prettier --write
+pnpm biome migrate eslint --write
+pnpm biome migrate stylelint --write
 ```
 
 ### Formatter
@@ -84,14 +56,6 @@ The formatter section in `biome.json` allows you to configure how your code is f
     }
   }
 }
-```
-
-## Migration
-
-```bash
-pnpm biome migrate eslint --write
-pnpm biome migrate prettier --write
-pnpm biome migrate stylelint --write
 ```
 
 ## Run
