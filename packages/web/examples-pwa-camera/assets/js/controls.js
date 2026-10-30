@@ -30,9 +30,9 @@ export function setControlsEnabled(controls, enabled) {
 
 export function subscribeInputLabel(input, label) {
   input?.addEventListener("input", (_ev) => {
-    label.innerText = input?.value
+    label.textContent = input?.value
   })
-  label.innerText = input?.value
+  label.textContent = input?.value
 }
 
 export function subscribeControlsEvent(controls, type, listener) {

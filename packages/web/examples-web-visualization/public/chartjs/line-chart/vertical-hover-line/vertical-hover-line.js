@@ -19,7 +19,6 @@
   global = typeof globalThis !== "undefined" ? globalThis : global || self
   global.VerticalHoverLine = factory(global.Chart.helpers, global.Chart)
 })(this, function (_helpers, _chart_js) {
-  "use strict"
   const plugin = {
     id: "verticalHoverLine",
 

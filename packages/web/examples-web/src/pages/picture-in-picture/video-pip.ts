@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (document.pictureInPictureEnabled) {
       return enabled
     } else {
-      log!.innerText = "PiP not supported. Check browser compatibility for details."
+      log!.textContent = "PiP not supported. Check browser compatibility for details."
       return true
     }
   }

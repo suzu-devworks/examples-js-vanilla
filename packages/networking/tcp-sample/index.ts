@@ -3,8 +3,8 @@ import net from "net"
 const server = net
   .createServer((socket: net.Socket) => {
     socket.on("data", (data: unknown) => {
-      console.log(data + " from " + socket.remoteAddress + ":" + socket.remotePort)
-      socket.write("Echo: " + data)
+      console.log(`${data}·from·${socket.remoteAddress}:${socket.remotePort}`)
+      socket.write(`Echo:·${data}`)
     })
     socket.on("close", () => {
       console.log("Client closed connection")

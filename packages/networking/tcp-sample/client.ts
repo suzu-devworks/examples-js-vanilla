@@ -9,7 +9,7 @@ const client = net.connect(3000, "localhost", () => {
 })
 
 client.on("data", (data: string) => {
-  console.log("Received: " + data)
+  console.log(`Received: ${data}`)
 
   if (~data.indexOf("!")) {
     console.log("continue")

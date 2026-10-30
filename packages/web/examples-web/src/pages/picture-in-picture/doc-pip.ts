@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // The Document Picture-in-Picture API is supported.
     pipButton!.removeAttribute("disabled")
   } else {
-    log!.innerText = "PiP not supported. Check browser compatibility for details."
+    log!.textContent = "PiP not supported. Check browser compatibility for details."
   }
 
   pipButton!.addEventListener("click", async () => {

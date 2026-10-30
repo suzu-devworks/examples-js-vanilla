@@ -1,4 +1,4 @@
-import { subscribeInputLabel, createLabeledRadio, setSelections, setControlsEnabled } from "./controls.js"
+import { createLabeledRadio, setControlsEnabled, setSelections, subscribeInputLabel } from "./controls.js"
 
 export { setControlsEnabled, subscribeControlsEvent } from "./controls.js"
 
@@ -75,7 +75,7 @@ export function configurePointOfInterestSelector(document, item) {
 
     const display = document.querySelector(".point-value")
     if (display) {
-      display.innerText = ""
+      display.textContent = ""
     }
 
     const focus = document.querySelector(".focus-point")
@@ -117,7 +117,7 @@ export function setCameraSettingValues(document, parent, preferences, onclick) {
 
     const id = `${settingItemPrefix}${name}`
 
-    if (capability instanceof Array) {
+    if (Array.isArray(capability)) {
       let item = document.getElementById(id)
       if (!item) {
         item = createRadioSelector(document, id, name)
@@ -142,7 +142,7 @@ export function setCameraSettingValues(document, parent, preferences, onclick) {
       continue
     }
 
-    if (typeof capability == "boolean") {
+    if (typeof capability === "boolean") {
       let item = document.getElementById(id)
       if (!item) {
         item = createCheckboxInput(document, id, name)
@@ -161,7 +161,7 @@ export function setCameraSettingValues(document, parent, preferences, onclick) {
 function createSettingItem(document, id, name, values = null) {
   const label = document.createElement("label")
   label.className = "setting-name"
-  label.innerText = name
+  label.textContent = name
 
   const container = document.createElement("div")
   container.className = "setting-values"
@@ -272,7 +272,7 @@ function setRangeValue(item, value) {
 
   const display = item?.querySelector(".range-value")
   if (display) {
-    display.innerText = value
+    display.textContent = value
   }
 }
 
@@ -311,7 +311,7 @@ function setCheckboxValue(item, checked) {
 
   const display = item?.querySelector(".checkbox-value")
   if (display) {
-    display.innerText = checked ? "ON" : "OFF"
+    display.textContent = checked ? "ON" : "OFF"
   }
 }
 

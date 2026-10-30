@@ -8,7 +8,7 @@ export class Logger {
   #createEntry(className, massage) {
     const entry = document.createElement("pre")
     entry.className = className
-    entry.innerText = massage
+    entry.textContent = massage
     return entry
   }
 

@@ -1,19 +1,19 @@
-import { Camera } from "./assets/js/camera.js"
-import { Logger } from "./assets/js/logger.js"
+import { Camera } from "./assets/js/camera.js";
+import { Logger } from "./assets/js/logger.js";
 import {
-  configureDefaultControls,
-  configureDefaultControlsEvent,
-  configureDeviceSelector,
-  configureAspectRatioSelector,
-  resetSelector,
-  clearCameraSettingValues,
-  setCameraSettingValues,
-  flipCameraHorizontal,
-  configurePointOfInterestSelector,
-  setControlsEnabled,
-  subscribeControlsEvent,
-} from "./assets/js/settings.js"
-;(() => {
+    clearCameraSettingValues,
+    configureAspectRatioSelector,
+    configureDefaultControls,
+    configureDefaultControlsEvent,
+    configureDeviceSelector,
+    configurePointOfInterestSelector,
+    flipCameraHorizontal,
+    resetSelector,
+    setCameraSettingValues,
+    setControlsEnabled,
+    subscribeControlsEvent,
+} from "./assets/js/settings.js";
+(() => {
   const logger = new Logger(document.getElementById("logs"))
 
   const video = document.getElementById("video")
@@ -61,7 +61,7 @@ import {
 
     const message = `size: ${canvas.width}x${canvas.height}`
     const info = document.getElementById("photo-info")
-    info.innerText = message
+    info.textContent = message
     logger.logInfo(`Take Photo, ${message}`)
   }
 
@@ -169,7 +169,7 @@ import {
       const settings = ev.detail?.settings
       const message = `size: ${settings?.width}x${settings?.height}` + `, aspectRatio: ${settings?.aspectRatio}`
       const info = document.getElementById("video-info")
-      info.innerText = message
+      info.textContent = message
     } catch (err) {
       console.error(err)
       logger.logError(err)
@@ -241,7 +241,7 @@ import {
       focusPoint.dataset.normalPoint = normal
 
       if (display) {
-        display.innerText = `offset: ${offset}\nnormal: ${normal}`
+        display.textContent = `offset: ${offset}\nnormal: ${normal}`
       }
 
       if (buttons?.length > 0) {

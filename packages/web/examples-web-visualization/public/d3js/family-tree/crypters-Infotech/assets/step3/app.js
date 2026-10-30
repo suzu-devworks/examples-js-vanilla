@@ -53,14 +53,14 @@ export function draw(container) {
         ` H${d.target.x}` +
         ` V${d.target.y}`
     )
-    .classed("hide", (d) => d.target.data.child == undefined)
+    .classed("hide", (d) => d.target.data.child === undefined)
 
   const connections2 = svg.append("g").selectAll("path").data(information.links())
   connections2
     .enter()
     .append("path")
     .attr("d", (d) =>
-      d.target.data.child == undefined ? `M${d.source.x} ${d.source.y} h80` : `M${d.source.x + 40} ${d.source.y} h40`
+      d.target.data.child === undefined ? `M${d.source.x} ${d.source.y} h80` : `M${d.source.x + 40} ${d.source.y} h40`
     )
 
   const rectangles = svg.append("g").selectAll("rect").data(information.descendants())
@@ -69,13 +69,13 @@ export function draw(container) {
     .append("rect")
     .attr("x", (d) => d.x - (40 + 20))
     .attr("y", (d) => d.y - 20)
-    .classed("hide", (d) => d.data.child == undefined)
+    .classed("hide", (d) => d.data.child === undefined)
     .on("mousedown", (_e, d) => {
       // console.log("mousedown", e, d)
       d3.select("#details")
         .style("visibility", "visible")
         .html(() => {
-          if (d.data.spouse != undefined) return `Spouse: ${d.data.spouse}`
+          if (d.data.spouse !== undefined) return `Spouse: ${d.data.spouse}`
           else return "No Spouse"
         })
     })
@@ -90,7 +90,7 @@ export function draw(container) {
     .append("rect")
     .attr("x", (d) => d.x + (40 + 20))
     .attr("y", (d) => d.y - 20)
-    .classed("hide", (d) => d.data.spouse == undefined)
+    .classed("hide", (d) => d.data.spouse === undefined)
 
   const names = svg.append("g").selectAll("text").data(information.descendants())
   names

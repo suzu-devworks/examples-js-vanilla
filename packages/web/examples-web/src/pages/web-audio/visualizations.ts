@@ -96,7 +96,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       draw()
-    } else if (visualSetting == "frequencybars") {
+    } else if (visualSetting === "frequencybars") {
       analyser.fftSize = 256
       const bufferLengthAlt = analyser.frequencyBinCount
 
@@ -120,7 +120,7 @@ document.addEventListener("DOMContentLoaded", function () {
         for (let i = 0; i < bufferLengthAlt; i++) {
           const barHeight = dataArrayAlt[i]
 
-          canvasCtx.fillStyle = "rgb(" + (barHeight + 100) + ",50,50)"
+          canvasCtx.fillStyle = `rgb(${barHeight + 100},50,50)`
           canvasCtx.fillRect(x, HEIGHT - barHeight / 2, barWidth, barHeight / 2)
 
           x += barWidth + 1
@@ -128,7 +128,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       drawAlt()
-    } else if (visualSetting == "off") {
+    } else if (visualSetting === "off") {
       canvasCtx.clearRect(0, 0, WIDTH, HEIGHT)
       canvasCtx.fillStyle = "red"
       canvasCtx.fillRect(0, 0, WIDTH, HEIGHT)
@@ -154,7 +154,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       visualize()
     } catch (err) {
-      console.error("The following gUM error occurred: " + err)
+      console.error(`The following gUM error occurred: ${err}`)
     }
   }
 

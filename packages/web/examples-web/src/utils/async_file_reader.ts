@@ -1,7 +1,4 @@
 export class AsyncFileReader extends FileReader {
-  constructor() {
-    super()
-  }
 
   readAsArrayBufferAsync(blob: Blob): Promise<ArrayBuffer | null | undefined> {
     return new Promise((resolve, reject) => {

@@ -35,8 +35,38 @@
   "linter": {
     "enabled": true,
     "rules": {
-      "preset": "recommended"
-    }
+      "preset": "recommended",
+      "a11y": {
+        "noLabelWithoutControl": "off",
+        "noSvgWithoutTitle": "off",
+        "useAltText": "off",
+        "useButtonType": "off"
+      },
+      "correctness": {
+        "useParseIntRadix": "off"
+      },
+      "complexity": {
+        "useArrowFunction": "off"
+      },
+      "style": {
+        "noNonNullAssertion": "off",
+        "useNodejsImportProtocol": "off"
+      },
+      "suspicious": {
+        "useIterableCallbackReturn": "off"
+      }
+    },
+    "includes": [
+      "**",
+      "!.*/**",
+      "!**/build",
+      "!**/coverage",
+      "!**/dist/**",
+      "!**/temp/**",
+      "!packages/examples-express-ejs/**/*.css",
+      "!**/generated/*.css",
+      "!**/dist/**/*.css"
+    ]
   },
   "javascript": {
     "formatter": {
@@ -57,6 +87,26 @@
       "selfCloseVoidElements": "always"
     }
   },
+  "overrides": [
+    {
+      "includes": [
+        "**/*.{css,scss,sass}"
+      ],
+      "linter": {
+        "rules": {
+          "complexity": {
+            "noImportantStyles": "off"
+          },
+          "correctness": {
+            "noUnknownUnit": "off"
+          },
+          "suspicious": {
+            "noDuplicateProperties": "off"
+          }
+        }
+      }
+    }
+  ],
   "assist": {
     "enabled": true,
     "actions": {

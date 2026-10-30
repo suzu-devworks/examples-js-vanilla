@@ -42,7 +42,7 @@ export function draw(container) {
   connections
     .enter()
     .append("path")
-    .attr("d", (d) => `M${d.source.x},${d.source.y}` + ` v50` + ` H${d.target.x}` + ` V${d.target.y}`)
+    .attr("d", (d) => `M${d.source.x},${d.source.y} v50 H${d.target.x} V${d.target.y}`)
 
   const rectangles = svg.append("g").selectAll("rect").data(information.descendants())
   rectangles

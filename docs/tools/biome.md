@@ -24,6 +24,53 @@ First, generate the initial settings file using the command:
 pnpm biome init
 ```
 
+### Formatter
+
+Configure how code is formatted in the `formatter` section.
+
+```json
+{
+  "formatter": {
+    "enabled": true,
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineEnding": "lf",
+    "lineWidth": 100
+  },
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "single",
+      "semicolons": "asNeeded",
+      "trailingComma": "es5"
+    }
+  }
+}
+```
+
+### Linter
+
+I’d like to use "recommended" as a starting point, but...
+
+```json
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "preset": "recommended"
+    },
+    "includes": [
+      "**",
+      "!.*/**",
+      "!**/build",
+      "!**/coverage",
+      "!**/dist/**",
+      "!**/temp/**",
+      "!packages/examples-express-ejs/**/*.css",
+      "!**/generated/*.css",
+      "!**/dist/**/*.css"
+    ]
+  },
+```
+
 ## Migration
 
 Biome can automatically migrate your existing ESLint, Prettier, and Stylelint configuration files
@@ -35,30 +82,31 @@ pnpm biome migrate eslint --write
 pnpm biome migrate stylelint --write
 ```
 
-### Formatter
+## Run
 
-The formatter section in `biome.json` allows you to configure how your code is formatted.
+Formats the specified files.
 
-```json
-{
-  "formatter": {
-    "enabled": true,
-    "indentStyle": "space",
-    "indentWidth": 2,
-    "lineEnding": "lf",
-    "lineWidth": 120
-  },
-  "javascript": {
-    "formatter": {
-      "quoteStyle": "double",
-      "semicolons": "asNeeded",
-      "trailingComma": "es5"
-    }
-  }
-}
+```bash
+pnpm biome format
 ```
 
-## Run
+Runs the linter on the specified files.
+
+```bash
+pnpm biome lint
+```
+
+Checks the specified files for formatting, linting, and assist actions.
+
+```bash
+pnpm biome check
+```
+
+Runs formatting checks, linting checks, and assist actions in CI without modifying files.
+
+```bash
+pnpm biome ci
+```
 
 ## References
 
