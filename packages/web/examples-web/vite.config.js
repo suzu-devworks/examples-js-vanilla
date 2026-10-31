@@ -1,6 +1,6 @@
 import { extname, resolve } from 'node:path'
-import { defineConfig } from 'vite'
 import { glob } from 'glob'
+import { defineConfig } from 'vite'
 
 const __dirname = import.meta.dirname
 const root = resolve(__dirname, 'src')

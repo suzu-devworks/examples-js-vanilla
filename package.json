@@ -14,18 +14,15 @@
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "postinstall": "simple-git-hooks",
-    "lint": "pnpm run lint:style && pnpm run lint:es",
-    "lint:es": "eslint . --cache",
-    "lint:style": "stylelint --cache \"**/*.{css,scss}\"",
-    "format": "prettier --write --cache ."
+    "lint": "biome check .",
+    "format": "biome format ."
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm lint-staged"
   },
   "lint-staged": {
-    "*": ["pnpm run format --ignore-unknown"],
-    "packages/**/*.{js,mjs,cjs,ts,mts,cts}": ["pnpm run lint:es --fix"],
-    "packages/**/*.{css,scss}": ["pnpm run lint:style --fix"]
+    "packages/**/*": ["pnpm run format --write"],
+    "packages/**/*.{js,mjs,cjs,ts,mts,cts,css,scss}": ["pnpm run lint --write"]
   },
   "devDependencies": {
     "@biomejs/biome": "^2.6.4",

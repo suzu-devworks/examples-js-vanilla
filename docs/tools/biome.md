@@ -1,6 +1,6 @@
 # Biome
 
-Biome is a tool for formatting, linting, and checking JavaScript and TypeScript code.  
+Biome is a tool for formatting, linting, and checking JavaScript and TypeScript code.
 
 The greatest advantage is, quite simply, that multiple tools are consolidated into a single definition file.
 
@@ -106,6 +106,17 @@ Runs formatting checks, linting checks, and assist actions in CI without modifyi
 
 ```bash
 pnpm biome ci
+```
+
+## Package scripts
+
+Add a lint script to your `package.json`:
+
+```json
+"scripts": {
+  "lint": "biome check .",
+  "format": "biome format ."
+}
 ```
 
 ## VSCode Extension
