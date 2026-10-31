@@ -1,4 +1,4 @@
-import { AsyncFileReader } from "@/utils/async_file_reader"
+import { AsyncFileReader } from '@/utils/async_file_reader'
 
 export const content = `
   <article>
@@ -29,11 +29,11 @@ export const content = `
   </article>
 `
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener('DOMContentLoaded', function () {
   const audioContext = new AudioContext()
 
   // get the audio element
-  const audioElement = document.querySelector<HTMLMediaElement>("#audio-file")
+  const audioElement = document.querySelector<HTMLMediaElement>('#audio-file')
 
   // pass it into the audio context
   const track = audioContext.createMediaElementSource(audioElement!)
@@ -51,40 +51,40 @@ document.addEventListener("DOMContentLoaded", function () {
   track.connect(gainNode).connect(pannerNode).connect(audioContext.destination)
 
   // select our play button
-  const playButton = document.querySelector<HTMLButtonElement>("#play-audio-file")
+  const playButton = document.querySelector<HTMLButtonElement>('#play-audio-file')
   playButton!.addEventListener(
-    "click",
+    'click',
     async function () {
       // check if context is in suspended state (autoplay policy)
-      if (audioContext.state === "suspended") {
+      if (audioContext.state === 'suspended') {
         audioContext.resume()
       }
 
       // play or pause track depending on state
-      if (this.dataset.playing === "false") {
+      if (this.dataset.playing === 'false') {
         audioElement!.play()
-        this.dataset.playing = "true"
-      } else if (this.dataset.playing === "true") {
+        this.dataset.playing = 'true'
+      } else if (this.dataset.playing === 'true') {
         audioElement!.pause()
-        this.dataset.playing = "false"
+        this.dataset.playing = 'false'
       }
     },
     /* useCapture */ false
   )
 
   audioElement!.addEventListener(
-    "ended",
+    'ended',
     () => {
-      playButton!.dataset.playing = "false"
+      playButton!.dataset.playing = 'false'
     },
     false
   )
 
-  const volumeControl = document.querySelector<HTMLInputElement>("#audio-file-volume")
+  const volumeControl = document.querySelector<HTMLInputElement>('#audio-file-volume')
   volumeControl?.addEventListener(
-    "input",
+    'input',
     function () {
-      gainNode.gain.value = parseFloat(this.value ?? "1")
+      gainNode.gain.value = parseFloat(this.value ?? '1')
       const output = this.nextElementSibling
       if (output) {
         output.textContent = `${this.value}`
@@ -93,11 +93,11 @@ document.addEventListener("DOMContentLoaded", function () {
     false
   )
 
-  const pannerControl = document.querySelector<HTMLInputElement>("#audio-file-panner")
+  const pannerControl = document.querySelector<HTMLInputElement>('#audio-file-panner')
   pannerControl!.addEventListener(
-    "input",
+    'input',
     function () {
-      pannerNode.pan.value = parseInt(this.value ?? "0")
+      pannerNode.pan.value = parseInt(this.value ?? '0')
       const output = this.nextElementSibling
       if (output) {
         output.textContent = `${this.value}`
@@ -106,27 +106,27 @@ document.addEventListener("DOMContentLoaded", function () {
     false
   )
 
-  const replayButton = document.querySelector<HTMLButtonElement>("#replay-audio-file")
+  const replayButton = document.querySelector<HTMLButtonElement>('#replay-audio-file')
   replayButton!.addEventListener(
-    "click",
+    'click',
     function () {
       audioElement!.currentTime = 0
     },
     false
   )
 
-  document.querySelector<HTMLInputElement>("#audio-file-selector")!.addEventListener(
-    "change",
+  document.querySelector<HTMLInputElement>('#audio-file-selector')!.addEventListener(
+    'change',
     async function () {
       playButton!.disabled = true
       replayButton!.disabled = true
-      audioElement!.src = ""
+      audioElement!.src = ''
 
       const file = this.files![0]
 
       if (file) {
         const url = await new AsyncFileReader().readAsDataURLAsync(file)
-        audioElement!.src = url ?? ""
+        audioElement!.src = url ?? ''
         playButton!.disabled = false
         replayButton!.disabled = false
       }

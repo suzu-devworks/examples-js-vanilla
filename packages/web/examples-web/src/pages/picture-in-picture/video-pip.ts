@@ -23,16 +23,16 @@ export const content = `
   </article>
 `
 
-document.addEventListener("DOMContentLoaded", function () {
-  const video = document.querySelector<HTMLVideoElement>("#video-pip")
-  const pipButton = document.querySelector<HTMLInputElement>("#pip-button")
-  const log = document.getElementById("log-pip")
+document.addEventListener('DOMContentLoaded', function () {
+  const video = document.querySelector<HTMLVideoElement>('#video-pip')
+  const pipButton = document.querySelector<HTMLInputElement>('#pip-button')
+  const log = document.getElementById('log-pip')
 
   function disabledPictureInPicture(enabled: boolean) {
     if (document.pictureInPictureEnabled) {
       return enabled
     } else {
-      log!.textContent = "PiP not supported. Check browser compatibility for details."
+      log!.textContent = 'PiP not supported. Check browser compatibility for details.'
       return true
     }
   }
@@ -45,17 +45,17 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  pipButton!.addEventListener("click", function () {
+  pipButton!.addEventListener('click', function () {
     togglePictureInPicture()
   })
 
-  const selector = document.querySelector<HTMLInputElement>("#video-pip-selector")
-  selector!.addEventListener("change", function () {
+  const selector = document.querySelector<HTMLInputElement>('#video-pip-selector')
+  selector!.addEventListener('change', function () {
     pipButton!.disabled = true
     video!.pause()
     if (video!.src) {
       URL.revokeObjectURL(video!.src)
-      video!.src = ""
+      video!.src = ''
     }
 
     const file = this.files![0]
@@ -67,14 +67,14 @@ document.addEventListener("DOMContentLoaded", function () {
     video!.src = URL.createObjectURL(blob)
     video!.play()
     pipButton!.disabled = disabledPictureInPicture(false)
-    console.log("playing...")
+    console.log('playing...')
   })
 
-  document.addEventListener("beforeunload", function () {
+  document.addEventListener('beforeunload', function () {
     video!.pause()
     if (video!.src) {
       URL.revokeObjectURL(video!.src)
-      video!.src = ""
+      video!.src = ''
     }
   })
 })

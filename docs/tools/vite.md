@@ -27,24 +27,24 @@ Example project structure:
 Sample `vite.config.js`:
 
 ```js
-import { extname, resolve } from "node:path"
-import { defineConfig } from "vite"
-import { glob } from "glob"
+import { extname, resolve } from 'node:path'
+import { defineConfig } from 'vite'
+import { glob } from 'glob'
 
 const __dirname = import.meta.dirname
-const root = resolve(__dirname, "src")
+const root = resolve(__dirname, 'src')
 
 export default defineConfig({
   root,
-  publicDir: resolve(__dirname, "public"),
+  publicDir: resolve(__dirname, 'public'),
   build: {
-    outDir: resolve(__dirname, "dist"),
+    outDir: resolve(__dirname, 'dist'),
     emptyOutDir: true,
     rollupOptions: {
       input: {
-        index: resolve(root, "index.html"),
-        "pages/counters/index": resolve(root, "pages/counters/index.html"),
-        "pages/nested/index": resolve(root, "pages/nested/index.html"),
+        index: resolve(root, 'index.html'),
+        'pages/counters/index': resolve(root, 'pages/counters/index.html'),
+        'pages/nested/index': resolve(root, 'pages/nested/index.html'),
       },
     },
   },
@@ -58,17 +58,19 @@ export default defineConfig({
 To automatically include all HTML files under `pages`, use glob:
 
 ```js
-import { glob } from "glob"
+import { glob } from 'glob'
 
-const files = await glob("pages/**/*.html", { cwd: root })
-const pages = Object.fromEntries(files.map((path) => [path.replace(extname(path), ""), resolve(root, path)]))
+const files = await glob('pages/**/*.html', { cwd: root })
+const pages = Object.fromEntries(
+  files.map((path) => [path.replace(extname(path), ''), resolve(root, path)])
+)
 
 export default defineConfig({
   root,
   build: {
     rollupOptions: {
       input: {
-        index: resolve(root, "index.html"),
+        index: resolve(root, 'index.html'),
         ...pages,
       },
     },
@@ -159,12 +161,12 @@ See [Vite Alias Configuration](https://ja.vite.dev/config/shared-options.html#re
 
 ```js
 const __dirname = import.meta.dirname
-const root = resolve(__dirname, "src")
+const root = resolve(__dirname, 'src')
 
 export default defineConfig({
   resolve: {
     alias: {
-      "@": `${root}`,
+      '@': `${root}`,
     },
   },
 })

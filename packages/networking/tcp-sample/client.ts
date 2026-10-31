@@ -1,21 +1,21 @@
-import net from "net"
+import net from 'net'
 
 let i = 0
 
-const client = net.connect(3000, "localhost", () => {
-  console.log("connected to server")
-  client.write("Hello Server!")
+const client = net.connect(3000, 'localhost', () => {
+  console.log('connected to server')
+  client.write('Hello Server!')
   i++
 })
 
-client.on("data", (data: string) => {
+client.on('data', (data: string) => {
   console.log(`Received: ${data}`)
 
-  if (~data.indexOf("!")) {
-    console.log("continue")
+  if (~data.indexOf('!')) {
+    console.log('continue')
     sendMessage(data)
   } else {
-    console.log("break")
+    console.log('break')
     client.end()
   }
 })
@@ -23,11 +23,11 @@ client.on("data", (data: string) => {
 function sendMessage(_data: string) {
   switch (i) {
     case 1:
-      client.write("second")
+      client.write('second')
       i++
       break
     case 2:
-      client.write("See you")
+      client.write('See you')
       i++
       break
     default:
@@ -36,10 +36,10 @@ function sendMessage(_data: string) {
   return 0
 }
 
-client.on("end", () => {
+client.on('end', () => {
   client.destroy()
 })
 
-client.on("close", () => {
-  console.log("Connection is closed")
+client.on('close', () => {
+  console.log('Connection is closed')
 })

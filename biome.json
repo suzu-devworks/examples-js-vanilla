@@ -14,7 +14,7 @@
     "indentStyle": "space",
     "indentWidth": 2,
     "lineEnding": "lf",
-    "lineWidth": 120,
+    "lineWidth": 100,
     "attributePosition": "auto",
     "bracketSameLine": false,
     "bracketSpacing": true,
@@ -76,7 +76,7 @@
       "semicolons": "asNeeded",
       "arrowParentheses": "always",
       "bracketSameLine": false,
-      "quoteStyle": "double",
+      "quoteStyle": "single",
       "attributePosition": "auto",
       "bracketSpacing": true
     }
@@ -89,9 +89,7 @@
   },
   "overrides": [
     {
-      "includes": [
-        "**/*.{css,scss,sass}"
-      ],
+      "includes": ["**/*.{css,scss,sass}"],
       "linter": {
         "rules": {
           "complexity": {

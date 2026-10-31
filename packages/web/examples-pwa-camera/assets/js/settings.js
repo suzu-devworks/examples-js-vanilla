@@ -1,8 +1,13 @@
-import { createLabeledRadio, setControlsEnabled, setSelections, subscribeInputLabel } from "./controls.js"
+import {
+  createLabeledRadio,
+  setControlsEnabled,
+  setSelections,
+  subscribeInputLabel,
+} from './controls.js'
 
-export { setControlsEnabled, subscribeControlsEvent } from "./controls.js"
+export { setControlsEnabled, subscribeControlsEvent } from './controls.js'
 
-const settingItemPrefix = "setting-item-"
+const settingItemPrefix = 'setting-item-'
 
 export function configureDefaultControls(_document) {
   // TODO
@@ -23,14 +28,14 @@ export function configureDefaultControlsEvent(document, onclick) {
 }
 
 export function configureDeviceSelector(_document, item, camera) {
-  const selector = item?.querySelector("select")
+  const selector = item?.querySelector('select')
   if (!selector) {
     return
   }
 
   camera?.getDevices().then((devices) => {
     setSelections(selector, [
-      new Option("default", "", true, true),
+      new Option('default', '', true, true),
       ...devices.map((x) => new Option(x.label, x.deviceId)),
     ])
   })
@@ -38,23 +43,23 @@ export function configureDeviceSelector(_document, item, camera) {
 
 export function configureAspectRatioSelector(document, item) {
   const aspectRatios = [
-    { name: "18:9", value: 2 },
-    { name: "16:9", value: 1.77778 },
-    { name: "4:3", value: 1.33333 },
-    { name: "1:1", value: 1 },
-    { name: "3:4", value: 0.75 },
-    { name: "9:16", value: 0.5625 },
-    { name: "9:18", value: 0.5 },
+    { name: '18:9', value: 2 },
+    { name: '16:9', value: 1.77778 },
+    { name: '4:3', value: 1.33333 },
+    { name: '1:1', value: 1 },
+    { name: '3:4', value: 0.75 },
+    { name: '9:16', value: 0.5625 },
+    { name: '9:18', value: 0.5 },
   ]
 
   const radios = [
-    createLabeledRadio(document, "aspectRatio", "default", "", {
+    createLabeledRadio(document, 'aspectRatio', 'default', '', {
       defaultSelected: true,
     }),
-    ...aspectRatios.map((x) => createLabeledRadio(document, "aspectRatio", x.name, x.value)),
+    ...aspectRatios.map((x) => createLabeledRadio(document, 'aspectRatio', x.name, x.value)),
   ]
 
-  setSelections(item?.querySelector(".setting-values"), radios)
+  setSelections(item?.querySelector('.setting-values'), radios)
 }
 
 export function resetSelector(item) {
@@ -73,17 +78,17 @@ export function configurePointOfInterestSelector(document, item) {
   subscribeCheckboxEvent(item, (ev) => {
     setCheckboxValue(item, ev.target.checked)
 
-    const display = document.querySelector(".point-value")
+    const display = document.querySelector('.point-value')
     if (display) {
-      display.textContent = ""
+      display.textContent = ''
     }
 
-    const focus = document.querySelector(".focus-point")
+    const focus = document.querySelector('.focus-point')
     if (focus) {
-      focus.style.display = "none"
+      focus.style.display = 'none'
     }
 
-    const buttons = item.querySelectorAll("button")
+    const buttons = item.querySelectorAll('button')
     setControlsEnabled(buttons, false)
   })
 
@@ -97,7 +102,7 @@ export function clearCameraSettingValues(parent) {
     return
   }
 
-  parent.innerHTML = ""
+  parent.innerHTML = ''
 }
 
 export function setCameraSettingValues(document, parent, preferences, onclick) {
@@ -105,7 +110,7 @@ export function setCameraSettingValues(document, parent, preferences, onclick) {
   const capabilities = preferences.capabilities
   const settings = preferences.settings
 
-  const excludes = ["deviceId", "groupId", "facingMode", "aspectRatio"]
+  const excludes = ['deviceId', 'groupId', 'facingMode', 'aspectRatio']
   const enumerate = Object.getOwnPropertyNames(capabilities).filter(
     (name) => supported[name] && !excludes.includes(name)
   )
@@ -130,7 +135,7 @@ export function setCameraSettingValues(document, parent, preferences, onclick) {
       continue
     }
 
-    if (capability instanceof Object && "max" in capability && "min" in capability) {
+    if (capability instanceof Object && 'max' in capability && 'min' in capability) {
       let item = document.getElementById(id)
       if (!item) {
         item = createRangeInput(document, id, name)
@@ -142,7 +147,7 @@ export function setCameraSettingValues(document, parent, preferences, onclick) {
       continue
     }
 
-    if (typeof capability === "boolean") {
+    if (typeof capability === 'boolean') {
       let item = document.getElementById(id)
       if (!item) {
         item = createCheckboxInput(document, id, name)
@@ -159,20 +164,20 @@ export function setCameraSettingValues(document, parent, preferences, onclick) {
 }
 
 function createSettingItem(document, id, name, values = null) {
-  const label = document.createElement("label")
-  label.className = "setting-name"
+  const label = document.createElement('label')
+  label.className = 'setting-name'
   label.textContent = name
 
-  const container = document.createElement("div")
-  container.className = "setting-values"
+  const container = document.createElement('div')
+  container.className = 'setting-values'
 
   for (const app of values ?? []) {
     container.appendChild(app)
   }
 
-  const item = document.createElement("div")
+  const item = document.createElement('div')
   item.id = id
-  item.className = "setting-item"
+  item.className = 'setting-item'
   item.appendChild(label)
   item.appendChild(container)
 
@@ -190,14 +195,16 @@ function createRadioSelector(document, id, name) {
 function subscribeRadioEvent(item, onchange) {
   const selectors = item?.querySelectorAll("input[type='radio']")
   for (const radio of selectors ?? []) {
-    radio.addEventListener("change", onchange)
+    radio.addEventListener('change', onchange)
   }
 }
 
 function setRadioCapability(item, capability) {
   const name = item?.dataset.name
-  const imageTracks = ["whiteBalanceMode", "exposureMode", "focusMode"]
-  const entries = imageTracks.includes(name) ? ["none", "manual", "single-shot", "continuous"] : capability
+  const imageTracks = ['whiteBalanceMode', 'exposureMode', 'focusMode']
+  const entries = imageTracks.includes(name)
+    ? ['none', 'manual', 'single-shot', 'continuous']
+    : capability
 
   const options = entries.map((value) => {
     const enabled = capability?.includes(value) ?? false
@@ -210,7 +217,7 @@ function setRadioCapability(item, capability) {
     return radio
   })
 
-  setSelections(item?.querySelector(".setting-values"), options)
+  setSelections(item?.querySelector('.setting-values'), options)
 }
 
 function setRadioValue(item, value) {
@@ -223,22 +230,22 @@ function setRadioValue(item, value) {
 // --- input[type="range"] ---
 
 function createRangeInput(document, id, name) {
-  const input = document.createElement("input")
-  input.type = "range"
+  const input = document.createElement('input')
+  input.type = 'range'
 
   input.dataset.name = name
 
-  const display = document.createElement("label")
-  display.className = "range-value"
+  const display = document.createElement('label')
+  display.className = 'range-value'
 
   return createSettingItem(document, id, name, [input, display])
 }
 
 function subscribeRangeEvent(item, onchange) {
   const input = item?.querySelector("input[type='range']")
-  input?.addEventListener("change", onchange)
+  input?.addEventListener('change', onchange)
 
-  const display = item?.querySelector(".range-value")
+  const display = item?.querySelector('.range-value')
   if (display) {
     subscribeInputLabel(input, display)
   }
@@ -270,7 +277,7 @@ function setRangeValue(item, value) {
 
   input.value = value
 
-  const display = item?.querySelector(".range-value")
+  const display = item?.querySelector('.range-value')
   if (display) {
     display.textContent = value
   }
@@ -279,22 +286,22 @@ function setRangeValue(item, value) {
 // --- input[type="checkbox"] ---
 
 function createCheckboxInput(document, id, name) {
-  const input = document.createElement("input")
-  input.type = "checkbox"
+  const input = document.createElement('input')
+  input.type = 'checkbox'
   input.id = `${id}-input`
 
   input.dataset.name = name
 
-  const display = document.createElement("label")
-  display.className = "checkbox-value"
-  display.setAttribute("for", input.id)
+  const display = document.createElement('label')
+  display.className = 'checkbox-value'
+  display.setAttribute('for', input.id)
 
   return createSettingItem(document, id, name, [input, display])
 }
 
 function subscribeCheckboxEvent(item, onchange) {
   const input = item?.querySelector("input[type='checkbox']")
-  input?.addEventListener("change", onchange)
+  input?.addEventListener('change', onchange)
 }
 
 function setCheckboxCapability(_item, _capability) {
@@ -309,14 +316,14 @@ function setCheckboxValue(item, checked) {
 
   input.checked = checked
 
-  const display = item?.querySelector(".checkbox-value")
+  const display = item?.querySelector('.checkbox-value')
   if (display) {
-    display.textContent = checked ? "ON" : "OFF"
+    display.textContent = checked ? 'ON' : 'OFF'
   }
 }
 
 // ---- others
 
 export function flipCameraHorizontal(video, front) {
-  video.className = front ? "camera-front" : ""
+  video.className = front ? 'camera-front' : ''
 }

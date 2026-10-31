@@ -29,7 +29,7 @@ See [Stylelint configuration guide](https://stylelint.io/user-guide/configure).
 ```js
 /** @type {import('stylelint').Config} */
 export default {
-  extends: ["stylelint-config-standard-scss"],
+  extends: ['stylelint-config-standard-scss'],
 }
 ```
 
@@ -62,7 +62,7 @@ npm install --save-dev stylelint stylelint-order stylelint-config-recess-order
 ```js
 /** @type {import('stylelint').Config} */
 export default {
-  extends: ["stylelint-config-recess-order"],
+  extends: ['stylelint-config-recess-order'],
 }
 ```
 

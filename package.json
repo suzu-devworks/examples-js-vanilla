@@ -10,9 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/suzu-devworks/examples-js-vanilla.git"
   },
-  "workspaces": [
-    "packages/**"
-  ],
+  "workspaces": ["packages/**"],
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "postinstall": "simple-git-hooks",
@@ -25,15 +23,9 @@
     "pre-commit": "pnpm lint-staged"
   },
   "lint-staged": {
-    "*": [
-      "pnpm run format --ignore-unknown"
-    ],
-    "packages/**/*.{js,mjs,cjs,ts,mts,cts}": [
-      "pnpm run lint:es --fix"
-    ],
-    "packages/**/*.{css,scss}": [
-      "pnpm run lint:style --fix"
-    ]
+    "*": ["pnpm run format --ignore-unknown"],
+    "packages/**/*.{js,mjs,cjs,ts,mts,cts}": ["pnpm run lint:es --fix"],
+    "packages/**/*.{css,scss}": ["pnpm run lint:style --fix"]
   },
   "devDependencies": {
     "@biomejs/biome": "^2.6.4",

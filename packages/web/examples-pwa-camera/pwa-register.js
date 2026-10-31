@@ -16,18 +16,18 @@
 
   // Register service worker to control making site work offline
 
-  if ("serviceWorker" in navigator) {
+  if ('serviceWorker' in navigator) {
     navigator.serviceWorker
-      .register("sw.js")
+      .register('sw.js')
       .then((registration) => {
-        console.log("Service Worker Registration successfull with scope: ", registration.scope)
+        console.log('Service Worker Registration successfull with scope: ', registration.scope)
       })
       .catch((err) => {
-        console.error("Service Worker Registration failed: ", err)
+        console.error('Service Worker Registration failed: ', err)
       })
 
-    window.addEventListener("beforeinstallprompt", (_ev) => {
-      console.log("Service Worker beforeinstallprompt")
+    window.addEventListener('beforeinstallprompt', (_ev) => {
+      console.log('Service Worker beforeinstallprompt')
       // Prevent Chrome 67 and earlier from automatically showing the prompt
       //ev.preventDefault();
 

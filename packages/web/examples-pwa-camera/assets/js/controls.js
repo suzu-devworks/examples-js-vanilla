@@ -1,13 +1,13 @@
 export function createLabeledRadio(document, group, text, value, options = null) {
-  const radio = document.createElement("input")
-  radio.type = "radio"
+  const radio = document.createElement('input')
+  radio.type = 'radio'
   radio.name = group
   radio.value = value
   radio.checked = options?.defaultSelected
   //radio.checked = options?.selected;
   radio.disabled = options?.disabled
 
-  const label = document.createElement("label")
+  const label = document.createElement('label')
   label.appendChild(radio)
   label.appendChild(new Text(text))
 
@@ -15,7 +15,7 @@ export function createLabeledRadio(document, group, text, value, options = null)
 }
 
 export function setSelections(selector, selections) {
-  selector.innerHTML = ""
+  selector.innerHTML = ''
 
   for (const item of selections ?? []) {
     selector.appendChild(item)
@@ -29,7 +29,7 @@ export function setControlsEnabled(controls, enabled) {
 }
 
 export function subscribeInputLabel(input, label) {
-  input?.addEventListener("input", (_ev) => {
+  input?.addEventListener('input', (_ev) => {
     label.textContent = input?.value
   })
   label.textContent = input?.value

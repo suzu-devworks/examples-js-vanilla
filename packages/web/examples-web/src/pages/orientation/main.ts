@@ -1,8 +1,8 @@
-import "@/assets/style.scss"
-import "./style.scss"
+import '@/assets/style.scss'
+import './style.scss'
 
 document.title = `Screen Orientation API - ${import.meta.env.VITE_APP_TITLE}`
-document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
+document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <h1>Screen Orientation API</h1>
   <article>
     <h2>Managing screen orientation</h2>
@@ -36,11 +36,11 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
 `
 
 const displayLocation = () => {
-  const output = document.querySelector<HTMLOutputElement>("#output-orientation")
+  const output = document.querySelector<HTMLOutputElement>('#output-orientation')
   output!.textContent = `The orientation of the screen is: ${screen.orientation.type}, angle=${screen.orientation.angle}°`
 }
 
-screen.orientation.addEventListener("change", () => {
+screen.orientation.addEventListener('change', () => {
   console.log(`The orientation of the screen is: ${screen.orientation.type}`)
   displayLocation()
 })
