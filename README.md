@@ -1,25 +1,26 @@
 # examples-js-vanilla
 
-[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+[![Formatted with Biome](https://img.shields.io/badge/Formatted_with-Biome-60a5fa?style=flat&logo=biome)](https://biomejs.dev/)
 [![CodeQL](https://github.com/suzu-devworks/examples-js-vanilla/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/suzu-devworks/examples-js-vanilla/actions/workflows/github-code-scanning/codeql)
 
-## What is the purpose of this repository?
+## What is this repository?
 
-This repository is just my personal playground for learning programming using Vanilla JavaScript and TypeScript.
+This repository is my personal playground for exploring programming with Vanilla JavaScript and TypeScript. The examples
+collecting examples and notes from what I learn that may help others facing similar challenges.
 
-The content here might actually be helpful to other developers facing similar issues.
+The content reflects my personal perspective and may contain inaccuracies.
 
-However, please keep in mind that this code is based solely on my own perspective and probably has lots of inaccurate or questionable parts!
+## What topics are covered?
 
-## Examples
-
-- [examples-web](./packages/web/examples-web/README.md)
-- [examples-web-visualization](./packages/web/examples-web-visualization/README.md)
-- [examples-pwa-camera](./packages/web/examples-pwa-camera/README.md)
-- [examples-express-ejs](./packages/web/examples-express-ejs/README.md)
+- Vanilla JavaScript and TypeScript
+- Browser APIs, including geo-location, file handling, and media capture
+- Web development with Vite and Sass
+- Data visualization and QR code libraries
+- Progressive web apps and camera access
+- Server-side development with Express and EJS, plus TCP networking
 
 ## Demo
 
-You can see some of that movement here.
+Some browser examples are available as a live demo:
 
 - [GitHub Pages](https://suzu-devworks.github.io/examples-js-vanilla/)
