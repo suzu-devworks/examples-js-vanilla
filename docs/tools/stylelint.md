@@ -71,6 +71,27 @@ export default {
 Use the [Stylelint extension](https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint)
 for Visual Studio Code.
 
+Typical settings are as follows:
+
+```json
+"[css][scss][sass]": {
+  "editor.codeActionsOnSave": {
+    "source.fixAll.stylelint": "explicit"
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
+}
+```
+
+It might be better to turn off the standard features：
+
+```json
+{
+  "css.validate": false,
+  "less.validate": false,
+  "scss.validate": false
+}
+```
+
 ## References
 
 - [Stylelint Official Site](https://stylelint.io/)

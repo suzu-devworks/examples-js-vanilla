@@ -1,8 +1,8 @@
 # Biome
 
 Biome is a tool for formatting, linting, and checking JavaScript and TypeScript code.  
-It is recommended to install Biome as a development dependency in your project,
-but it is also available as a standalone executable that does not require Node.js.
+
+The greatest advantage is, quite simply, that multiple tools are consolidated into a single definition file.
 
 ## Installation
 
@@ -106,6 +106,22 @@ Runs formatting checks, linting checks, and assist actions in CI without modifyi
 
 ```bash
 pnpm biome ci
+```
+
+## VSCode Extension
+
+Use the [Biome Extension for VS Code](https://marketplace.visualstudio.com/items?itemName=biomejs.biome)
+for Visual Studio Code.
+
+Typical settings are as follows:
+
+```json
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll.biome": "explicit",
+    "source.organizeImports.biome": "explicit"
+  }
+}
 ```
 
 ## References

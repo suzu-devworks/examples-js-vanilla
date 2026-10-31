@@ -75,6 +75,25 @@ To disable formatting by ESLint:
 }
 ```
 
+Other typical settings are as follows:
+
+```json
+{ 
+  "eslint.run": "onSave",
+  "eslint.useFlatConfig": true,
+  "eslint.workingDirectories": [
+    {
+      "pattern": "./packages/*/"
+    }
+  ],
+ "editor.codeActionsOnSave": {
+    "source.organizeImports": "explicit",
+    "source.fixAll.eslint": "explicit"
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
+},_
+```
+
 ## References
 
 - [ESLint Official Site](https://eslint.org/)

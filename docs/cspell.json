@@ -3,7 +3,11 @@
   "ignorePaths": [],
   "dictionaryDefinitions": [],
   "dictionaries": [],
-  "words": [],
+  "words": [
+    "esbenp"
+  ],
   "ignoreWords": [],
-  "import": ["../.vscode/cspell.json"]
+  "import": [
+    "../.vscode/cspell.json"
+  ]
 }

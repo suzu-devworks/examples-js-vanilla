@@ -89,7 +89,9 @@
   },
   "overrides": [
     {
-      "includes": ["**/*.{css,scss,sass}"],
+      "includes": [
+        "**/*.{css,scss,sass}"
+      ],
       "linter": {
         "rules": {
           "complexity": {

@@ -15,5 +15,5 @@
     "Udemy"
   ],
   "ignoreWords": [],
-  "import": ["../../.vscode/cspell.json"]
+  "import": ["../../../.vscode/cspell.json"]
 }
