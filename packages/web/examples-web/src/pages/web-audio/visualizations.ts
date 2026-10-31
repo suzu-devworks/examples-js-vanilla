@@ -24,7 +24,7 @@ export const content = `
 `
 // spell-checker: words Sinewave frequencybars
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener('DOMContentLoaded', function () {
   const audioCtx = new AudioContext()
 
   // Set up the different audio nodes we will use for the app
@@ -36,11 +36,11 @@ document.addEventListener("DOMContentLoaded", function () {
   const gainNode = audioCtx.createGain()
 
   // Set up canvas context for visualizer
-  const canvas = document.querySelector<HTMLCanvasElement>("#visualizer")
-  const canvasCtx = canvas!.getContext("2d")
+  const canvas = document.querySelector<HTMLCanvasElement>('#visualizer')
+  const canvasCtx = canvas!.getContext('2d')
   let drawVisual: number
 
-  const visualSelect = document.querySelector<HTMLSelectElement>("#visual-visualizer")
+  const visualSelect = document.querySelector<HTMLSelectElement>('#visual-visualizer')
   const visualize = async () => {
     if (!canvas || !canvasCtx) {
       return
@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const visualSetting = visualSelect!.value
     // console.log(visualSetting)
 
-    if (visualSetting === "sinewave") {
+    if (visualSetting === 'sinewave') {
       analyser.fftSize = 2048
       const bufferLength = analyser.fftSize
 
@@ -67,11 +67,11 @@ document.addEventListener("DOMContentLoaded", function () {
         // analyser.getFloatTimeDomainData(dataArray)
         analyser.getByteTimeDomainData(dataArray)
 
-        canvasCtx.fillStyle = "rgb(200, 200, 200)"
+        canvasCtx.fillStyle = 'rgb(200, 200, 200)'
         canvasCtx.fillRect(0, 0, WIDTH, HEIGHT)
 
         canvasCtx.lineWidth = 2
-        canvasCtx.strokeStyle = "rgb(0, 0, 0)"
+        canvasCtx.strokeStyle = 'rgb(0, 0, 0)'
 
         canvasCtx.beginPath()
 
@@ -96,7 +96,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       draw()
-    } else if (visualSetting == "frequencybars") {
+    } else if (visualSetting === 'frequencybars') {
       analyser.fftSize = 256
       const bufferLengthAlt = analyser.frequencyBinCount
 
@@ -111,7 +111,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // analyser.getFloatFrequencyData(dataArrayAlt)
         analyser.getByteFrequencyData(dataArrayAlt)
 
-        canvasCtx.fillStyle = "rgb(0, 0, 0)"
+        canvasCtx.fillStyle = 'rgb(0, 0, 0)'
         canvasCtx.fillRect(0, 0, WIDTH, HEIGHT)
 
         const barWidth = (WIDTH / bufferLengthAlt) * 2.5
@@ -120,7 +120,7 @@ document.addEventListener("DOMContentLoaded", function () {
         for (let i = 0; i < bufferLengthAlt; i++) {
           const barHeight = dataArrayAlt[i]
 
-          canvasCtx.fillStyle = "rgb(" + (barHeight + 100) + ",50,50)"
+          canvasCtx.fillStyle = `rgb(${barHeight + 100},50,50)`
           canvasCtx.fillRect(x, HEIGHT - barHeight / 2, barWidth, barHeight / 2)
 
           x += barWidth + 1
@@ -128,14 +128,14 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       drawAlt()
-    } else if (visualSetting == "off") {
+    } else if (visualSetting === 'off') {
       canvasCtx.clearRect(0, 0, WIDTH, HEIGHT)
-      canvasCtx.fillStyle = "red"
+      canvasCtx.fillStyle = 'red'
       canvasCtx.fillRect(0, 0, WIDTH, HEIGHT)
     }
   }
 
-  visualSelect!.addEventListener("change", () => {
+  visualSelect!.addEventListener('change', () => {
     cancelAnimationFrame(drawVisual)
     visualize()
   })
@@ -154,40 +154,40 @@ document.addEventListener("DOMContentLoaded", function () {
 
       visualize()
     } catch (err) {
-      console.error("The following gUM error occurred: " + err)
+      console.error(`The following gUM error occurred: ${err}`)
     }
   }
 
-  const muteButton = document.querySelector<HTMLButtonElement>("#mute-visualizer")
-  muteButton!.addEventListener("click", function () {
-    if (this.dataset.mute === "false") {
+  const muteButton = document.querySelector<HTMLButtonElement>('#mute-visualizer')
+  muteButton!.addEventListener('click', function () {
+    if (this.dataset.mute === 'false') {
       gainNode.gain.value = 0
-      this.dataset.mute = "true"
+      this.dataset.mute = 'true'
     } else {
       gainNode.gain.value = 1
-      this.dataset.mute = "false"
+      this.dataset.mute = 'false'
     }
   })
 
-  const playButton = document.querySelector<HTMLButtonElement>("#play-visualizer")
-  playButton!.addEventListener("click", async function () {
+  const playButton = document.querySelector<HTMLButtonElement>('#play-visualizer')
+  playButton!.addEventListener('click', async function () {
     // check if context is in suspended state (autoplay policy)
-    if (audioCtx.state === "suspended") {
+    if (audioCtx.state === 'suspended') {
       audioCtx.resume()
     }
 
     // play or pause track depending on state
-    if (this.dataset.playing === "false") {
+    if (this.dataset.playing === 'false') {
       await main()
       muteButton!.disabled = false
-      this.dataset.playing = "true"
-    } else if (this.dataset.playing === "true") {
+      this.dataset.playing = 'true'
+    } else if (this.dataset.playing === 'true') {
       audioCtx.suspend()
-      if (muteButton!.dataset.mute === "true") {
+      if (muteButton!.dataset.mute === 'true') {
         muteButton?.click()
       }
       muteButton!.disabled = true
-      this.dataset.playing = "false"
+      this.dataset.playing = 'false'
     }
   })
 })

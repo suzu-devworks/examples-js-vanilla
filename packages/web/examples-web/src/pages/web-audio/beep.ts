@@ -28,7 +28,7 @@ const playBeepSound = (params: { gain?: number; frequency?: number }) => {
   oscillator.connect(gainNode)
   gainNode.connect(context.destination)
 
-  oscillator.type = "square"
+  oscillator.type = 'square'
   oscillator.frequency.setValueAtTime(params.frequency ?? 440, context.currentTime) // value in hertz
   gainNode.gain.value = params.gain ?? 1
 
@@ -36,26 +36,26 @@ const playBeepSound = (params: { gain?: number; frequency?: number }) => {
   oscillator.stop(context.currentTime + 0.1)
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-  const playButton = document.querySelector<HTMLButtonElement>("#play-beep")
+document.addEventListener('DOMContentLoaded', function () {
+  const playButton = document.querySelector<HTMLButtonElement>('#play-beep')
 
-  const volumeControl = document.querySelector<HTMLInputElement>("#beep-volume")
-  volumeControl?.addEventListener("input", function () {
+  const volumeControl = document.querySelector<HTMLInputElement>('#beep-volume')
+  volumeControl?.addEventListener('input', function () {
     const output = this.nextElementSibling
     if (output) {
       output.textContent = `${this.value}`
     }
   })
 
-  const frequencyControl = document.querySelector<HTMLInputElement>("#beep-frequency")
-  frequencyControl!.addEventListener("input", function () {
+  const frequencyControl = document.querySelector<HTMLInputElement>('#beep-frequency')
+  frequencyControl!.addEventListener('input', function () {
     const output = this.nextElementSibling
     if (output) {
       output.textContent = `${this.value}Hz`
     }
   })
 
-  playButton!.addEventListener("click", async function () {
+  playButton!.addEventListener('click', async function () {
     playBeepSound({
       gain: volumeControl?.value ? parseFloat(volumeControl.value) : undefined,
       frequency: frequencyControl?.value ? parseFloat(frequencyControl.value) : undefined,

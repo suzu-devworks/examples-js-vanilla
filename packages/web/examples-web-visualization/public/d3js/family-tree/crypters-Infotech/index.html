@@ -32,7 +32,7 @@
     const { label, className, draw } = steps[i]
     document.querySelector("body").setAttribute("class", className)
 
-    document.getElementById("current").innerText = label
+    document.getElementById("current").textContent = label
     document.getElementById("prev").disabled = i === 0
     document.getElementById("next").disabled = i === steps.length - 1
 

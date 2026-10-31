@@ -1,28 +1,28 @@
-const cacheName = "examples-pwa-camera-caches"
+const cacheName = 'examples-pwa-camera-caches'
 const contentToCache = [
-  "app.js",
-  "favicon.ico",
-  "index.html",
-  "pwa-register.js",
-  "sw.js",
-  "assets/style.css",
-  "assets/icon/add_a_photo.svg",
-  "assets/icon/crop_free.svg",
-  "assets/icon/delete.svg",
-  "assets/icon/flip_camera_android.svg",
-  "assets/icon/icon.png",
-  "assets/js/camera.js",
-  "assets/js/controls.js",
-  "assets/js/logger.js",
-  "assets/js/settings.js",
+  'app.js',
+  'favicon.ico',
+  'index.html',
+  'pwa-register.js',
+  'sw.js',
+  'assets/style.css',
+  'assets/icon/add_a_photo.svg',
+  'assets/icon/crop_free.svg',
+  'assets/icon/delete.svg',
+  'assets/icon/flip_camera_android.svg',
+  'assets/icon/icon.png',
+  'assets/js/camera.js',
+  'assets/js/controls.js',
+  'assets/js/logger.js',
+  'assets/js/settings.js',
 ]
 
-self.addEventListener("install", (event) => {
-  console.log("[Service Worker] Install")
+self.addEventListener('install', (event) => {
+  console.log('[Service Worker] Install')
   event.waitUntil(
     (async () => {
       const cache = await caches.open(cacheName)
-      console.log("[Service Worker] Caching all: app shell and content")
+      console.log('[Service Worker] Caching all: app shell and content')
       // for (const content of contentToCache) {
       //   console.log(`[Service Worker] add ${content}`);
       // }
@@ -31,7 +31,7 @@ self.addEventListener("install", (event) => {
   )
 })
 
-self.addEventListener("fetch", (event) => {
+self.addEventListener('fetch', (event) => {
   event.respondWith(
     (async () => {
       console.log(`[Service Worker] Fetching resource: ${event.request.url}`)
@@ -48,8 +48,8 @@ self.addEventListener("fetch", (event) => {
   )
 })
 
-self.addEventListener("push", (event) => {
-  console.log("[Service Worker] Push")
-  const payload = event.data ? event.data.text() : "no payload"
-  console.log("[Service Worker] Push payload:", payload)
+self.addEventListener('push', (event) => {
+  console.log('[Service Worker] Push')
+  const payload = event.data ? event.data.text() : 'no payload'
+  console.log('[Service Worker] Push payload:', payload)
 })

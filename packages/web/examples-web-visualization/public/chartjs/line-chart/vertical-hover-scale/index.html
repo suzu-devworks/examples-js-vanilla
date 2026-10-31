@@ -84,14 +84,14 @@
               },
             },
           },
-          onHover: (event, activeElements, chart) => {
+          onHover: (_event, activeElements, chart) => {
             const datasets = chart.config.data.datasets
             if (activeElements[0]) {
               // console.log(activeElements[0], datasets[ctx.datasetIndex])
               const ctx = activeElements[0].element.$context
 
               Object.values(config.options.scales)
-                .filter((x) => x.axis == "y")
+                .filter((x) => x.axis === "y")
                 .forEach((scale) => (scale.display = false))
 
               const yAxisID = datasets[ctx.datasetIndex].yAxisID || "y"
@@ -108,11 +108,11 @@
       }
 
       // render init block
-      const myChart = new Chart(document.getElementById("myChart"), config)
+      const _myChart = new Chart(document.getElementById("myChart"), config)
 
       // Instantly assign Chart.js version
       const chartVersion = document.getElementById("chartVersion")
-      chartVersion.innerText = Chart.version
+      chartVersion.textContent = Chart.version
     </script>
   </body>
 </html>

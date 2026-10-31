@@ -92,7 +92,7 @@
 
         const message = document.createElement("div")
         message.className = "error-message"
-        message.innerText = error
+        message.textContent = error
 
         document.getElementById("messages").appendChild(message)
       }
@@ -108,7 +108,7 @@
              * devices would be an array of objects of type:
              * { id: "id", label: "label" }
              */
-            if (devices && devices.length) {
+            if (devices?.length) {
               const cameraId = devices[0].id
               // .. use this to start scanning.
 
@@ -152,7 +152,7 @@
         if (html5QrCode.getState() === Html5QrcodeScannerState.SCANNING) {
           html5QrCode
             .stop()
-            .then((ignore) => {
+            .then((_ignore) => {
               // QR Code scanning is stopped.
             })
             .catch((err) => {

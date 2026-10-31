@@ -1,22 +1,22 @@
 {
   "[css][scss][sass]": {
     "editor.codeActionsOnSave": {
-      "source.fixAll.stylelint": "explicit"
+      "source.fixAll.biome": "explicit"
     },
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "biomejs.biome"
   },
   "[html]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "biomejs.biome"
   },
   "[javascript][typescript]": {
     "editor.codeActionsOnSave": {
-      "source.organizeImports": "explicit",
-      "source.fixAll.eslint": "explicit"
+      "source.fixAll.biome": "explicit",
+      "source.organizeImports.biome": "explicit"
     },
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "biomejs.biome"
   },
   "[json][jsonc]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
+    "editor.defaultFormatter": "biomejs.biome"
   },
   "[markdown]": {
     "editor.codeActionsOnSave": {
@@ -33,14 +33,6 @@
   "css.validate": false,
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
-  "eslint.format.enable": false,
-  "eslint.run": "onSave",
-  "eslint.useFlatConfig": true,
-  "eslint.workingDirectories": [
-    {
-      "pattern": "./packages/*/"
-    }
-  ],
   "files.associations": {
     ".*ignore": "ignore",
     ".env.*": "properties"
@@ -52,8 +44,5 @@
     "**/obj/**": true
   },
   "less.validate": false,
-  "scss.validate": false,
-  "stylelint.packageManager": "pnpm",
-  "stylelint.run": "onSave",
-  "stylelint.validate": ["css", "scss", "vue"]
+  "scss.validate": false
 }

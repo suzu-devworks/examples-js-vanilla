@@ -1,19 +1,19 @@
-const express = require("express")
+const express = require('express')
 const router = express.Router()
 
 // GET memo API.
-router.get("/", function (req, res, _next) {
+router.get('/', function (req, res, _next) {
   res.json({
     memo: {
       id: 1,
-      text: req.query.text ?? "text",
+      text: req.query.text ?? 'text',
       updateAt: new Date().toISOString(),
     },
   })
 })
 
 // POST memo API.
-router.post("/", function (req, res, _next) {
+router.post('/', function (req, res, _next) {
   console.log(req.body)
   res.json({
     id: req.body.memo.id,

@@ -1,8 +1,8 @@
-import "@/assets/style.scss"
+import '@/assets/style.scss'
 
 const title = import.meta.env.VITE_APP_TITLE
 
-document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
+document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <h1>${title}</h1>
   <nav>
     <ul>

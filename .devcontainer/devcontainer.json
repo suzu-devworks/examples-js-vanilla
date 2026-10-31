@@ -1,6 +1,8 @@
 {
   "name": "TypeScript (Node.js)",
-  "dockerComposeFile": ["compose.dev.yaml"],
+  "dockerComposeFile": [
+    "compose.dev.yaml"
+  ],
   "service": "dev",
   "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
   "mounts": [
@@ -30,9 +32,8 @@
         "streetsidesoftware.code-spell-checker",
         "DavidAnson.vscode-markdownlint",
         "christian-kohler.npm-intellisense",
-        "esbenp.prettier-vscode",
-        "dbaeumer.vscode-eslint",
-        "stylelint.vscode-stylelint",
+        "-dbaeumer.vscode-eslint",
+        "biomejs.biome",
         "DotJoshJohnson.xml",
         "jock.svg"
       ]
