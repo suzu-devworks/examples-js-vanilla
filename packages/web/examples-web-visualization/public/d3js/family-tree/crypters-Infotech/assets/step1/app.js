@@ -4,29 +4,29 @@
  *  - [Part 1](https://www.youtube.com/watch?v=DvqeaVSe6Ko)
  *  - [Part 2](https://www.youtube.com/watch?v=sIackqM0M3M)
  */
-import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm"
+import * as d3 from 'https://cdn.jsdelivr.net/npm/d3@7/+esm'
 
 const data = [
-  { child: "John", parent: "" },
-  { child: "Aaron", parent: "Kevin" },
-  { child: "Kevin", parent: "John" },
-  { child: "Hannah", parent: "Ann" },
-  { child: "Rose", parent: "Sarah" },
-  { child: "Ann", parent: "John" },
-  { child: "Sarah", parent: "Kevin" },
-  { child: "Mark", parent: "Ann" },
-  { child: "Angel", parent: "Sarah" },
-  { child: "Tom", parent: "Hannah" },
+  { child: 'John', parent: '' },
+  { child: 'Aaron', parent: 'Kevin' },
+  { child: 'Kevin', parent: 'John' },
+  { child: 'Hannah', parent: 'Ann' },
+  { child: 'Rose', parent: 'Sarah' },
+  { child: 'Ann', parent: 'John' },
+  { child: 'Sarah', parent: 'Kevin' },
+  { child: 'Mark', parent: 'Ann' },
+  { child: 'Angel', parent: 'Sarah' },
+  { child: 'Tom', parent: 'Hannah' },
 ]
 
 export function draw(container) {
   const svg = d3
     .select(container)
-    .append("svg")
-    .attr("width", 600)
-    .attr("height", 450)
-    .append("g")
-    .attr("transform", "translate(50, 50)")
+    .append('svg')
+    .attr('width', 600)
+    .attr('height', 450)
+    .append('g')
+    .attr('transform', 'translate(50, 50)')
 
   const dataStructure = d3
     .stratify()
@@ -38,20 +38,20 @@ export function draw(container) {
   // console.log(information.descendants())
   // console.log(information.links())
 
-  const circles = svg.append("g").selectAll("circle").data(information.descendants())
+  const circles = svg.append('g').selectAll('circle').data(information.descendants())
   circles
     .enter()
-    .append("circle")
-    .attr("cx", (d) => d.x)
-    .attr("cy", (d) => d.y)
-    .attr("r", 5)
+    .append('circle')
+    .attr('cx', (d) => d.x)
+    .attr('cy', (d) => d.y)
+    .attr('r', 5)
 
-  const connections = svg.append("g").selectAll("path").data(information.links())
+  const connections = svg.append('g').selectAll('path').data(information.links())
   connections
     .enter()
-    .append("path")
+    .append('path')
     .attr(
-      "d",
+      'd',
       (d) =>
         `M${d.source.x},${d.source.y} ` +
         ` C ` +
@@ -60,11 +60,11 @@ export function draw(container) {
         ` ${d.target.x},${d.target.y}`
     )
 
-  const names = svg.append("g").selectAll("text").data(information.descendants())
+  const names = svg.append('g').selectAll('text').data(information.descendants())
   names
     .enter()
-    .append("text")
+    .append('text')
     .text((d) => d.data.child)
-    .attr("x", (d) => d.x + 7)
-    .attr("y", (d) => d.y + 4)
+    .attr('x', (d) => d.x + 7)
+    .attr('y', (d) => d.y + 4)
 }

@@ -29,7 +29,7 @@ See [Stylelint configuration guide](https://stylelint.io/user-guide/configure).
 ```js
 /** @type {import('stylelint').Config} */
 export default {
-  extends: ["stylelint-config-standard-scss"],
+  extends: ['stylelint-config-standard-scss'],
 }
 ```
 
@@ -62,7 +62,7 @@ npm install --save-dev stylelint stylelint-order stylelint-config-recess-order
 ```js
 /** @type {import('stylelint').Config} */
 export default {
-  extends: ["stylelint-config-recess-order"],
+  extends: ['stylelint-config-recess-order'],
 }
 ```
 
@@ -70,6 +70,27 @@ export default {
 
 Use the [Stylelint extension](https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint)
 for Visual Studio Code.
+
+Typical settings are as follows:
+
+```json
+"[css][scss][sass]": {
+  "editor.codeActionsOnSave": {
+    "source.fixAll.stylelint": "explicit"
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
+}
+```
+
+It might be better to turn off the standard features：
+
+```json
+{
+  "css.validate": false,
+  "less.validate": false,
+  "scss.validate": false
+}
+```
 
 ## References
 

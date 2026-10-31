@@ -31,17 +31,17 @@ const copyStyleSheets = (dist: Document, source: Document) => {
   // so that the player looks the same.
   ;[...source.styleSheets].forEach((styleSheet) => {
     try {
-      const cssRules = [...styleSheet.cssRules].map((rule) => rule.cssText).join("")
-      const style = document.createElement("style")
+      const cssRules = [...styleSheet.cssRules].map((rule) => rule.cssText).join('')
+      const style = document.createElement('style')
 
       style.textContent = cssRules
       dist.head.appendChild(style)
     } catch (error) {
       console.warn(error)
 
-      const link = document.createElement("link")
+      const link = document.createElement('link')
 
-      link.rel = "stylesheet"
+      link.rel = 'stylesheet'
       link.type = styleSheet.type
       link.media = styleSheet.media.mediaText
       link.href = styleSheet.href!
@@ -50,7 +50,7 @@ const copyStyleSheets = (dist: Document, source: Document) => {
   })
 }
 
-documentPictureInPicture.addEventListener("enter", (event) => {
+documentPictureInPicture.addEventListener('enter', (event) => {
   const pipWindow = event.window
   console.log(pipWindow)
 
@@ -58,20 +58,20 @@ documentPictureInPicture.addEventListener("enter", (event) => {
   console.log(pipWindow2)
 })
 
-document.addEventListener("DOMContentLoaded", function () {
-  const pipButton = document.querySelector<HTMLInputElement>("#doc-pip-button")
-  const closeButton = document.querySelector<HTMLButtonElement>("#close-doc-pip-button")
-  const log = document.getElementById("log-doc-pip")
+document.addEventListener('DOMContentLoaded', function () {
+  const pipButton = document.querySelector<HTMLInputElement>('#doc-pip-button')
+  const closeButton = document.querySelector<HTMLButtonElement>('#close-doc-pip-button')
+  const log = document.getElementById('log-doc-pip')
 
-  if ("documentPictureInPicture" in window) {
+  if ('documentPictureInPicture' in window) {
     // The Document Picture-in-Picture API is supported.
-    pipButton!.removeAttribute("disabled")
+    pipButton!.removeAttribute('disabled')
   } else {
-    log!.innerText = "PiP not supported. Check browser compatibility for details."
+    log!.textContent = 'PiP not supported. Check browser compatibility for details.'
   }
 
-  pipButton!.addEventListener("click", async () => {
-    const player = document.querySelector("#player-doc-pip")
+  pipButton!.addEventListener('click', async () => {
+    const player = document.querySelector('#player-doc-pip')
 
     // Open a Picture-in-Picture window
     // whose size is the same as the player's.
@@ -92,37 +92,37 @@ document.addEventListener("DOMContentLoaded", function () {
     pipWindow.document.body.append(player!)
 
     // Move the player back when the Picture-in-Picture window closes.
-    pipWindow.addEventListener("pagehide", () => {
-      const playerContainer = document.querySelector("#player-container-doc-pip")
+    pipWindow.addEventListener('pagehide', () => {
+      const playerContainer = document.querySelector('#player-container-doc-pip')
 
-      const pipPlayer = pipWindow.document.querySelector("#player-doc-pip")
+      const pipPlayer = pipWindow.document.querySelector('#player-doc-pip')
       playerContainer!.append(pipPlayer!)
 
       closeButton!.disabled = true
     })
 
     // Add a "mute" button to the Picture-in-Picture window.
-    const pipMuteButton = pipWindow.document.createElement("button")
-    pipMuteButton.textContent = "Mute"
-    pipMuteButton.addEventListener("click", () => {
-      const pipVideo = pipWindow.document.querySelector<HTMLVideoElement>("#video-doc-pip")
+    const pipMuteButton = pipWindow.document.createElement('button')
+    pipMuteButton.textContent = 'Mute'
+    pipMuteButton.addEventListener('click', () => {
+      const pipVideo = pipWindow.document.querySelector<HTMLVideoElement>('#video-doc-pip')
       pipVideo!.muted = true
     })
     pipWindow.document.body.append(pipMuteButton)
 
     // Add a "resize" button to the Picture-in-Picture window.
-    const resizeButton = pipWindow.document.createElement("button")
-    resizeButton.textContent = "Resize"
-    resizeButton.addEventListener("click", () => {
+    const resizeButton = pipWindow.document.createElement('button')
+    resizeButton.textContent = 'Resize'
+    resizeButton.addEventListener('click', () => {
       // Expand the Picture-in-Picture window's width by 20px and height by 30px.
       pipWindow.resizeBy(20, 30)
     })
     pipWindow.document.body.append(resizeButton)
 
     // Add a "Return to opener tab" button to the Picture-in-Picture window.
-    const returnToTabButton = pipWindow.document.createElement("button")
-    returnToTabButton.textContent = "Return to opener tab"
-    returnToTabButton.addEventListener("click", () => {
+    const returnToTabButton = pipWindow.document.createElement('button')
+    returnToTabButton.textContent = 'Return to opener tab'
+    returnToTabButton.addEventListener('click', () => {
       window.focus()
     })
     pipWindow.document.body.append(returnToTabButton)
@@ -133,12 +133,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   })
 
-  const output = document.querySelector("#output-doc-pip")
+  const output = document.querySelector('#output-doc-pip')
   const timer = setInterval(() => {
     output!.textContent = new Date().toISOString()
   }, 500)
 
-  document.addEventListener("beforeunload", function () {
+  document.addEventListener('beforeunload', function () {
     clearInterval(timer)
   })
 })

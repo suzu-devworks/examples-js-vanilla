@@ -6,15 +6,15 @@ export class Logger {
   }
 
   #createEntry(className, massage) {
-    const entry = document.createElement("pre")
+    const entry = document.createElement('pre')
     entry.className = className
-    entry.innerText = massage
+    entry.textContent = massage
     return entry
   }
 
   logInfo(parameter, options) {
     let data = parameter
-    if (typeof parameter === "string") {
+    if (typeof parameter === 'string') {
       data = { message: parameter }
     }
 
@@ -24,12 +24,12 @@ export class Logger {
       ...options,
     }
 
-    this.#element.appendChild(this.#createEntry("log-info", JSON.stringify(notify)))
+    this.#element.appendChild(this.#createEntry('log-info', JSON.stringify(notify)))
   }
 
   logError(error, options) {
     let data = error
-    if (typeof error === "string") {
+    if (typeof error === 'string') {
       data = { message: error }
     }
 
@@ -43,6 +43,6 @@ export class Logger {
       ...options,
     }
 
-    this.#element.appendChild(this.#createEntry("log-error", JSON.stringify(notify)))
+    this.#element.appendChild(this.#createEntry('log-error', JSON.stringify(notify)))
   }
 }

@@ -22,13 +22,16 @@ export class Camera {
 
     if (this.#navigator.mediaDevices.getUserMedia === undefined) {
       this.#navigator.mediaDevices.getUserMedia = (constraints) => {
-        const getUserMediaLegacy = this.#navigator.webkitGetUserMedia || this.#navigator.mozGetUserMedia
+        const getUserMediaLegacy =
+          this.#navigator.webkitGetUserMedia || this.#navigator.mozGetUserMedia
 
         if (!getUserMediaLegacy) {
-          return Promise.reject(new Error("getUserMedia is not implemented in this browser"))
+          return Promise.reject(new Error('getUserMedia is not implemented in this browser'))
         }
 
-        return new Promise((resolve, reject) => getUserMediaLegacy.call(this.#navigator, constraints, resolve, reject))
+        return new Promise((resolve, reject) =>
+          getUserMediaLegacy.call(this.#navigator, constraints, resolve, reject)
+        )
       }
     }
   }
@@ -40,7 +43,7 @@ export class Camera {
     const constraints = track?.getConstraints()
     const settings = track?.getSettings()
 
-    const ev = new CustomEvent("appliedConstraints", {
+    const ev = new CustomEvent('appliedConstraints', {
       detail: {
         settings: settings,
         constraints: constraints,
@@ -54,19 +57,19 @@ export class Camera {
   get front() {
     const [track] = this.#stream?.getVideoTracks() ?? [null]
     const settings = track?.getSettings()
-    const front = settings?.facingMode === "user"
+    const front = settings?.facingMode === 'user'
     return front
   }
 
   async getDevices() {
-    console.log("getDevices.")
+    console.log('getDevices.')
 
     const devices = await this.#navigator.mediaDevices.enumerateDevices()
-    return devices.filter((x) => "videoinput" === x.kind)
+    return devices.filter((x) => 'videoinput' === x.kind)
   }
 
   async open(parameters = null) {
-    console.log("open.", parameters)
+    console.log('open.', parameters)
 
     const constraints = {
       audio: false,
@@ -78,7 +81,7 @@ export class Camera {
 
     this.#video.srcObject = this.#stream
     this.#video.onloadedmetadata = () => this.#video.play()
-    this.#video.addEventListener("canplay", async () => {
+    this.#video.addEventListener('canplay', async () => {
       if (!this.#streaming) {
         this.#streaming = true
         this.#raiseAppliedConstraintsEvent()
@@ -90,7 +93,7 @@ export class Camera {
   }
 
   close() {
-    console.log("close.")
+    console.log('close.')
 
     this.#stream?.getTracks().forEach((track) => track.stop())
     this.#streaming = false
@@ -99,7 +102,7 @@ export class Camera {
   }
 
   async applyConstraints(parameters) {
-    console.log("applyConstraints.", parameters)
+    console.log('applyConstraints.', parameters)
 
     const [track] = this.#stream?.getVideoTracks() ?? [null]
 
@@ -115,16 +118,16 @@ export class Camera {
   }
 
   async applyAdvancedConstraints(parameters) {
-    console.log("applyAdvancedConstraints.", parameters)
+    console.log('applyAdvancedConstraints.', parameters)
 
     if (parameters.exposureTime) {
-      parameters.exposureMode = "manual"
+      parameters.exposureMode = 'manual'
     }
     if (parameters.focusDistance) {
-      parameters.focusMode = "manual"
+      parameters.focusMode = 'manual'
     }
     if (parameters.colorTemperature) {
-      parameters.whiteBalanceMode = "manual"
+      parameters.whiteBalanceMode = 'manual'
     }
 
     const constants = { advanced: [{ ...parameters }] }
@@ -133,11 +136,11 @@ export class Camera {
   }
 
   async switchDevices(parameters = null) {
-    console.log("switchDevices.", parameters)
+    console.log('switchDevices.', parameters)
 
     if (!parameters) {
       const front = this.front
-      const facingMode = front ? { exact: "environment" } : "user"
+      const facingMode = front ? { exact: 'environment' } : 'user'
       parameters = { video: { facingMode: facingMode } }
     }
 

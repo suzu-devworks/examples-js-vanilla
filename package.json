@@ -10,43 +10,24 @@
     "type": "git",
     "url": "git+https://github.com/suzu-devworks/examples-js-vanilla.git"
   },
-  "workspaces": [
-    "packages/**"
-  ],
+  "workspaces": ["packages/**"],
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "postinstall": "simple-git-hooks",
-    "lint": "pnpm run lint:style && pnpm run lint:es",
-    "lint:es": "eslint . --cache",
-    "lint:style": "stylelint --cache \"**/*.{css,scss}\"",
-    "format": "prettier --write --cache ."
+    "lint": "biome check .",
+    "format": "biome format ."
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm lint-staged"
   },
   "lint-staged": {
-    "*": [
-      "pnpm run format --ignore-unknown"
-    ],
-    "packages/**/*.{js,mjs,cjs,ts,mts,cts}": [
-      "pnpm run lint:es --fix"
-    ],
-    "packages/**/*.{css,scss}": [
-      "pnpm run lint:style --fix"
-    ]
+    "packages/**/*": ["pnpm run format --write"],
+    "packages/**/*.{js,mjs,cjs,ts,mts,cts,css,scss}": ["pnpm run lint --write"]
   },
   "devDependencies": {
-    "@eslint/js": "^10.0.1",
-    "@eslint/json": "^2.1.1",
-    "eslint": "^10.13.0",
-    "globals": "^17.13.0",
+    "@biomejs/biome": "^2.6.4",
     "lint-staged": "^17.6.0",
-    "prettier": "3.9.10",
-    "simple-git-hooks": "^2.14.0",
-    "stylelint": "^17.16.0",
-    "stylelint-config-recess-order": "^7.9.0",
-    "stylelint-config-standard-scss": "^17.0.0",
-    "typescript-eslint": "^8.72.1"
+    "simple-git-hooks": "^2.14.0"
   },
   "packageManager": "pnpm@12.16.1"
 }

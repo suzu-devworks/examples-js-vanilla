@@ -34,7 +34,7 @@ pnpm add --D lint-staged simple-git-hooks
 ## Run
 
 ```shell
-pnpm run lint-staged
+pnpm lint-staged
 ```
 
 ## References

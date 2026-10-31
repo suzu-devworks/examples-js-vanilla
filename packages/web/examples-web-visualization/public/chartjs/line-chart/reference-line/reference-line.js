@@ -15,7 +15,7 @@
 // }
 // ```
 const toColor = (value) => {
-  if (typeof value === "function") {
+  if (typeof value === 'function') {
     return value.apply()
   } else if (Array.isArray(value)) {
     return value.length > 0 ? value[0] : undefined
@@ -27,7 +27,7 @@ const toColor = (value) => {
 const drawReferenceLine = (ctx, x, y, width, options) => {
   ctx.save()
 
-  ctx.strokeStyle = options.borderColor ?? "rgb(0 0 0 / 0.6)"
+  ctx.strokeStyle = options.borderColor ?? 'rgb(0 0 0 / 0.6)'
   ctx.lineWith = options.lineWidth ?? 1
   ctx.setLineDash([3, 2])
 
@@ -42,7 +42,7 @@ const drawReferenceLine = (ctx, x, y, width, options) => {
 const drawReferenceArea = (ctx, x, y, width, height, options) => {
   ctx.save()
 
-  ctx.fillStyle = options.backgroundColor ?? "rgb(0 0 0 / 0.1)"
+  ctx.fillStyle = options.backgroundColor ?? 'rgb(0 0 0 / 0.1)'
   ctx.fillRect(x, y, width, height)
 
   ctx.restore()
@@ -60,7 +60,7 @@ const drawText = (ctx, text, x, y, options) => {
   if (dx !== undefined && dy !== undefined) {
     ctx.save()
 
-    ctx.fillStyle = options.textColor ?? "rgb(0 0 0)"
+    ctx.fillStyle = options.textColor ?? 'rgb(0 0 0)'
     ctx.fillText(text, dx, dy)
 
     ctx.restore()
@@ -68,12 +68,12 @@ const drawText = (ctx, text, x, y, options) => {
 
   function getTextPosition() {
     switch (options.textAlign) {
-      case "inside": {
+      case 'inside': {
         const dx = Math.max(x + margin, 0)
         const dy = Math.max(y + textRect.fontBoundingBoxAscent + margin, 0)
         return { dx, dy }
       }
-      case "outside": {
+      case 'outside': {
         const dx = Math.max(x - textRect.width - margin, 0)
         const dy = y
         return { dx, dy }
@@ -85,13 +85,13 @@ const drawText = (ctx, text, x, y, options) => {
 }
 
 export default {
-  id: "reference_line",
+  id: 'reference_line',
 
   defaults: {
     display: true,
     label: {
       display: true,
-      align: "inside",
+      align: 'inside',
     },
   },
 
@@ -104,7 +104,7 @@ export default {
 
     data.datasets.forEach((dataset) => {
       if (dataset.upperLimit || dataset.lowerLimit) {
-        const yAxisID = dataset.yAxisID ?? "y"
+        const yAxisID = dataset.yAxisID ?? 'y'
         const axis = chart.scales[yAxisID]
 
         const dx = chart.scales.x.left

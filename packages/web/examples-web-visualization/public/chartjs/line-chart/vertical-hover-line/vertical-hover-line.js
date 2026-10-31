@@ -16,12 +16,11 @@
 // }
 // ```
 ;(function (global, factory) {
-  global = typeof globalThis !== "undefined" ? globalThis : global || self
+  global = typeof globalThis !== 'undefined' ? globalThis : global || self
   global.VerticalHoverLine = factory(global.Chart.helpers, global.Chart)
 })(this, function (_helpers, _chart_js) {
-  "use strict"
   const plugin = {
-    id: "verticalHoverLine",
+    id: 'verticalHoverLine',
 
     beforeDatasetsDraw(chart, _args, _plugins) {
       const {
@@ -34,7 +33,7 @@
       chart.getDatasetMeta(0).data.forEach((dataPoint, _index) => {
         if (dataPoint.active === true) {
           ctx.beginPath()
-          ctx.strokeStyle = "gray"
+          ctx.strokeStyle = 'gray'
           ctx.moveTo(dataPoint.x, top)
           ctx.lineTo(dataPoint.x, bottom)
           ctx.stroke()
